@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>CSS Flexible Box Layout Cheat Sheet</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic">
+    <link rel="stylesheet/less" href="index.less">
+</head>
+
+<body>
+    <header>
+        <h1>CSS Flexible Box Layout Cheat Sheet</h1>
+        <h5>
+            <a href="https://drafts.csswg.org/css-flexbox/">W3C Candidate Recommendation &mdash; January 2016</a>
+        </h5>
+        <h5>Flexbox - A new layout mode in CSS: layouts without tables, floats, position, or inline-blocks.</h5>
+    </header>
+    <main>
+        <section>
+            <header>
+                <h1>Flex Container</h1>
+                <p>A container holding flex items. Declared by setting the display property to <code>flex</code> or <code>inline-flex</code>.
+                    Example &mdash; <code class="em">display: flex;</code></p>
+            </header>
+            <section>
+                <h1>Properties</h1>
+                <dl>
+                    <dt>flex-direction</dt>
+                    <dd>items direction on the flex line <b>||</b> main axis</dd>
+                    <ul>
+                        <li class="default">row</li>
+                        <li>row-reverse</li>
+                    </ul>
+                    <ul>
+                        <li>column</li>
+                        <li>column-reverse</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>flex-wrap</dt>
+                    <dd>when needed, wraps items onto a new flex line</dd>
+                    <ul>
+                        <li class="default">no-wrap</li>
+                    </ul>
+                    <ul>
+                        <li>wrap</li>
+                        <li>wrap-reverse</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>justify-content</dt>
+                    <dd>item's position on the flex line <b>||</b> main axis</dd>
+                    <ul>
+                        <li class="default">flex-start</li>
+                        <li>flex-end</li>
+                    </ul>
+                    <ul>
+                        <li>center</li>
+                    </ul>
+                    <ul>
+                        <li>space-between</li>
+                        <li>space-around</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>align-content</dt>
+                    <dd>flex lines' position <b>&perp;</b> main axis, 2+ flex lines</dd>
+                    <ul>
+                        <li class="default">stretch</li>
+                    </ul>
+                    <ul>
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                    </ul>
+                    <ul>
+                        <li>center</li>
+                    </ul>
+                    <ul>
+                        <li>space-between</li>
+                        <li>space-around</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>align-items</dt>
+                    <dd>item's position on the flex line <b>&perp;</b> main axis</dd>
+                    <ul>
+                        <li class="default">stretch</li>
+                    </ul>
+                    <ul>
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                    </ul>
+                    <ul>
+                        <li>center</li>
+                    </ul>
+                    <ul>
+                        <li>baseline</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>flex-flow</dt>
+                    <dd>shorthand for flex-direction and flex-wrap</dd>
+                    <dd class="no-caps"><code>flex-flow: {flex-direction} {flex-wrap};</code></dd>
+                    <ul>
+                        <li class="default">row</li>
+                        <li class="default">no-wrap</li>
+                    </ul>
+                </dl>
+            </section>
+            <footer>
+                <p><b>&perp;</b> main axis == <b>||</b> cross axis</p>
+                <p class="default">indicates default value</p>
+                <section>
+                    <div>
+                        <div class="vertical-left-center">
+                            <span>Main Start</span>
+                        </div>
+                        <div>
+                            <div>Cross Start</div>
+                            <div class="grid">
+                                <div>
+                                    <span>Flex Line</span>
+                                </div>
+                                <div></div>
+                            </div>
+                            <div class="grid">
+                                <div></div>
+                                <div>
+                                    <span>
+                                        Main Direction &rarr;
+                                        <br>
+                                        Main Axis
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div></div>
+                                <div class="vertical-right-left">
+                                    <span>
+                                        &larr; Cross Size &rarr;
+                                        <br>
+                                        Cross Direction &rarr;
+                                        <br>
+                                        Cross Axis
+                                    </span>
+                                </div>
+                            </div>
+                            <div>Cross End</div>
+                        </div>
+                        <div class="vertical-right-center">
+                            <span>Main End</span>
+                        </div>
+                    </div>
+                </section>
+            </footer>
+        </section>
+        <section>
+            <header>
+                <h1>Flex Item</h1>
+                <p>The immediate children of a flex container. Positioned along a flex line. Direction depends on the writing
+                    mode. Example &mdash; <code class="em">flex: auto;</code></p>
+            </header>
+            <section>
+                <h1>Properties</h1>
+                <dl>
+                    <dt>flex</dt>
+                    <dd>
+                        how extra space is distributed along the flex line <b>||</b> main axis
+                    </dd>
+                    <dd>
+                        in the form of <code>flex: {grow} {shrink} {basis};</code>
+                    </dd>
+                    <dd class="no-caps">
+                        <code>{grow}</code> and <code>{shrink}</code> must be positive integer values</code>
+                    </dd>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt class="default">initial</dt>
+                                <dd>inflexibly grow, flexibly shrink, auto basis</dd>
+                                <dd class="no-caps"><code>flex: 0 1 auto;</code></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>auto</dt>
+                                <dd>fully flexible, auto basis</dd>
+                                <dd class="no-caps"><code>flex: 1 1 auto;</code></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>none</dt>
+                                <dd>fully inflexible, auto basis</dd>
+                                <dd class="no-caps"><code>flex: 0 0 auto;</code></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>{integer}</dt>
+                                <dd class="no-caps">integer for grow, flexible shrink, 0% basis</dd>
+                                <dd class="no-caps"><code>flex: {integer} 1 0%;</code></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>{integer-a} {integer-b}</dt>
+                                <dd class="no-caps">integer-a for grow, integer-b for shrink, 0% basis</dd>
+                                <dd class="no-caps"><code>flex: {integer-a} {integer-b} 0%;</code></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>{integer-a} {integer-b} {value}</dt>
+                                <dd class="no-caps">integer-a for grow, integer-b for shrink, value for basis</dd>
+                                <dd class="no-caps"><code>flex: {integer-a} {integer-b} {value};</code></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>align-self</dt>
+                    <dd>overrides container <span class="container-prop">align-items</span> property</dd>
+                    <ul>
+                        <li class="default">auto</li>
+                    </ul>
+                    <ul>
+                        <li>stretch</li>
+                    </ul>
+                    <ul>
+                        <li>flex-start</li>
+                        <li>flex-end</li>
+                    </ul>
+                    <ul>
+                        <li>center</li>
+                    </ul>
+                    <ul>
+                        <li>baseline</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>order</dt>
+                    <dd>item's order relative to other sibling items</dd>
+                    <dd>any positive or negative integer</dd>
+                    <ul>
+                        <li class="default">0</li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>margin</dt>
+                    <dd>not specific to flex items</dd>
+                    <ul>
+                        <li class="default">0</li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>auto</dt>
+                                <dd>a quick way to center an item along both axes</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </dl>
+                <dl>
+                    <dt>visibility</dt>
+                    <dd>changes the behavior of the cross size rendering</dd>
+                    <dd>not specific to flex items</dd>
+                    <ul>
+                        <li class="default">visible</li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>collapse</dt>
+                                <dd>keeps the cross size as if the item were visible but does not render the item</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>hidden</dt>
+                                <dd>does not keep the cross size as if the item were visible and does not render the item</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </dl>
+            </section>
+            <footer>
+                <p class="default">indicates default value</p>
+            </footer>
+        </section>
+    </main>
+    <footer>
+        <p>Thanks to the article at <a href="https://bocoup.com/weblog/dive-into-flexbox">bocoup</a> for inspiring the initial
+            draft of this cheat sheet; however, things have changed since that first draft way back in 2013. Summerized by
+            <a href="https://github.com/coderfin">coderfin</a>. &copy; 2016</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.6.0/less.min.js"></script>
+</body>
+
+</html>

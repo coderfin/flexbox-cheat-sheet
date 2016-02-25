@@ -1,0 +1,311 @@
+@darker-green: #385723;
+@dark-green: #70AD47;
+@light-green: #E2F0D9;
+@darker-blue: #3962AB;
+@dark-blue: #4472C4;
+@light-blue: #DAE3F3;
+@dark-brown: #804d00;
+
+@base-space: 2rem;
+@half-space: 1rem;
+
+* {
+    box-sizing: border-box;    
+}
+
+html {
+    font-size: 62.5%; // 10px
+}
+
+body {
+    margin: @base-space auto;
+    text-rendering: optimizeLegibility;
+    width: 90%;
+    
+    -webkit-font-smoothing: antialiased;
+    
+    > header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+body, code.em {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem; // Default 16px
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+a {
+    color: @dark-brown;
+    text-decoration: none;
+    
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+p {
+    line-height: 125%;
+    margin: 0;
+}
+
+b {
+    font-weight: inherit;
+}
+
+header {
+    h1, h5 {
+        text-align: center;
+    }
+}
+
+header h1, header h5, footer p {
+    line-height: 175%;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    
+    > section {
+        flex: 1 1 auto;
+        margin: @base-space 0 0 0;
+        
+        section {
+            border: solid black;
+            border-width: 0 0.1rem 0.1rem 0.1rem;
+
+            h1 {
+                background: @dark-green;
+                border-bottom: 0.1rem solid black;
+                color: white;
+                font-weight: 300;
+                font-size: 2.4rem;
+            }
+        }
+    }
+}
+
+section { 
+    > header h1 {
+        font-size: 3.5rem;
+    }
+    
+    header {
+        border: 0.1rem solid black;
+
+        h1 {
+            background: @dark-green;
+            border-bottom: 0.1rem solid black;
+            color: white;
+            font-weight: 300;
+        }
+    }
+    
+    header p, section h1 {
+        padding: @half-space;
+    }
+}
+
+code.em {
+    color: @darker-green;
+    font-weight: bold;
+}
+
+dl {
+    margin: 0;
+    padding: @half-space;
+
+    + dl {
+        padding-top: 0;
+    }
+}
+
+section > dl > dt, .container-prop {
+    background: @light-green;
+    color: @darker-green;
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 0.2rem 0.8rem;
+}
+
+dd {
+    margin: 0 0 0 @base-space;
+    
+    // Had to use a class because overriding ::first-letter from a <code> tag did not work.
+    &:not(.no-caps)::first-letter {
+        text-transform: capitalize;
+    }
+}
+
+dl ul {
+    list-style: none;
+    margin-bottom: @half-space/2;
+    margin-top: @half-space/2;
+    padding-left: @base-space*2;
+    
+    li {
+        display: inline-block;
+    }
+    
+    li + li::before {
+        content: ",";
+        right: 0.2rem;
+        padding: 0 @half-space/2 0 0;
+        position: relative;
+    }
+    
+    dl {
+        padding: 0;
+    }
+}
+
+.default {
+    color: @darker-green; 
+    font-size: large;
+    font-style: italic;
+    font-weight: bold;
+    
+    &::before {
+        content: "[";
+    }
+    
+    &::after {
+        content: "]";
+    }
+}
+
+main > section:nth-child(2) {
+    header h1, section h1 {
+        background: @dark-blue;
+    }
+    
+    code.em {
+        color: @darker-blue;
+    }
+    
+    section > dl > dt {
+        background: @light-blue;
+        color: @darker-blue;
+    }
+    
+    .default {
+        color: @darker-blue;
+    }
+}
+
+section footer section {
+    border: none;
+    display: flex;
+    margin-top: 2rem;
+    min-height: 36rem;
+    
+    .vertical-left-center, .vertical-right-center, .vertical-right-left {
+        max-width: @base-space;
+        position: relative;
+        
+        span {
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            white-space: nowrap;
+        }
+    }
+    
+    .vertical-left-center span {
+        transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    }
+    
+    .vertical-right-center span {
+        transform: translateX(-50%) translateY(-50%) rotate(90deg);
+    }
+    
+    .vertical-right-left {
+        max-width: initial;
+            
+        span {
+            left: @half-space;
+            transform: translateX(-50%) translateY(-50%) rotate(90deg);
+        }
+    }
+    
+    > div {
+        flex: 1 1 auto;
+    
+        &:first-child {
+            display: flex;
+            
+            > div {
+                flex: 1 1 @base-space;
+            }
+            
+            > div:nth-child(2) {
+                display: flex;
+                flex-grow: 4;
+                flex-direction: column;
+                
+                > div {
+                    flex: 1 1 @base-space;
+                    
+                    &:nth-child(4) {
+                        flex-grow: 4;
+                    }
+                    
+                    &:not(.grid) {
+                        max-height: @base-space;
+                        text-align: center;
+                    }
+                }
+            }
+            
+            .grid {
+                display: flex;
+                
+                > div {
+                    border: 0.1rem solid black;
+                    flex: 1 1 @base-space;
+                    position: relative;
+                    
+                    span {
+                        bottom: 0;
+                        padding-left: 10%;
+                        position: absolute;
+                    }
+                    
+                    + div {
+                        border-left: 0;
+                    }
+                }
+            
+                + .grid > div {
+                    border-top: 0;
+                }
+            }
+            
+            .grid .vertical-right-left span {
+                padding-left: 0;
+            }
+        }
+    }
+}
+
+main + footer p {
+    margin-top: @base-space;
+}
+
+@media (min-width: 768px) {
+    main > section {
+        flex: 1 1 0%;
+        margin-right: @half-space;
+    
+        + section {
+            margin-left: @half-space;
+            margin-right: 0;
+        }
+    }
+}
