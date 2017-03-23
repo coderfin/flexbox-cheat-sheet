@@ -1,7 +1,7 @@
 # CSS Flexible Box Layout Cheat Sheet
 >Flexbox - A new layout mode in CSS: layouts without tables, floats, position, or inline-blocks.
 
-####[Flexbox Cheat Sheet](http://coderfin.github.io/flexbox-cheat-sheet/)
+#### [Flexbox Cheat Sheet](http://coderfin.github.io/flexbox-cheat-sheet/)
 
 Click the "Flexbox Cheat Sheet" link above to view a condensed "cheat sheet" version of the CSS Flexible Box Layout mode.  
 
